@@ -1,70 +1,100 @@
-# Getting Started with Create React App
+# Full-Stack Blog Application (React + Node + Express + MySQL)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a full-stack blog application that allows users to register, log in, create, edit, delete, and view blog posts. It uses **React.js** for the frontend, **Node.js + Express** for the backend, and **MySQL** as the database. Authentication is handled using **JWT (JSON Web Tokens)** stored inside **HttpOnly cookies**, and posts support file uploads via **Multer**.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Features
 
-### `npm start`
+- User Registration & Login
+- JWT Authentication & Protected Routes
+- Create, Edit & Delete Posts (Only by the post owner)
+- Category-based filtering
+- Rich Text Blog Editor with ReactQuill
+- Image Upload System for Posts
+- Persistent login using LocalStorage
+- Responsive and clean UI
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🧠 How It Works
 
-### `npm test`
+1. **User signs up or logs in**
+   - Backend verifies credentials
+   - JWT is generated and stored in a cookie
+2. **User can now access protected features**
+   - Creating, editing, and deleting their posts
+3. **Frontend communicates with backend**
+   - Using `axios` & `withCredentials: true`
+4. **MySQL stores all user and post data**
+5. **Uploaded images**
+   - Saved to `/frontend/public/upload`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🛠️ Technologies Used
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+| Layer          | Tech                         |
+| -------------- | ---------------------------- |
+| Frontend       | React.js, Axios, Context API |
+| Backend        | Node.js, Express.js          |
+| Database       | MySQL                        |
+| Authentication | JWT + Cookies                |
+| File Handling  | Multer                       |
+| Editor         | React-Quill                  |
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🏗️ Project Architecture
 
-### `npm run eject`
+React (Frontend)
+│
+Axios HTTP Requests
+│
+Express API + JWT Auth (Backend)
+│
+MySQL Database
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📋 Setup Instructions
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 1️⃣ Clone the repository
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```sh
+git clone <your-repo-url>
+cd project-folder
+Setup backend                                            cd backend
+npm install
+npm start           Edit database credentials in db.js if needed.                                       database tables                                        CREATE DATABASE blog;
 
-## Learn More
+CREATE TABLE users (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ username VARCHAR(255),
+ email VARCHAR(255),
+ password VARCHAR(255),
+ img VARCHAR(255)
+);
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+CREATE TABLE posts (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ title VARCHAR(255),
+ `desc` TEXT,
+ img VARCHAR(255),
+ cat VARCHAR(255),
+ date VARCHAR(255),
+ uid INT,
+ FOREIGN KEY (uid) REFERENCES users(id)
+);
+Setup frontend                                        cd frontend
+npm install
+Add Axios defaults in main.jsx: import axios from "axios";
+axios.defaults.baseURL = "http://localhost:8800/api";
+axios.defaults.withCredentials = true;
+in the end run the app by:           npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Mohamad Massri
+github: https://github.com/Mohamad-massri/Project_phase2.git
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![alt text](<WhatsApp Image 2025-12-31 at 8.27.21 PM (1).jpeg>) ![alt text](<WhatsApp Image 2025-12-31 at 8.27.21 PM (2).jpeg>) ![alt text](<WhatsApp Image 2025-12-31 at 8.27.21 PM.jpeg>) ![alt text](<WhatsApp Image 2025-12-31 at 8.27.18 PM.jpeg>) ![alt text](<WhatsApp Image 2025-12-31 at 8.27.19 PM (1).jpeg>) ![alt text](<WhatsApp Image 2025-12-31 at 8.27.19 PM (2).jpeg>) ![alt text](<WhatsApp Image 2025-12-31 at 8.27.19 PM.jpeg>) ![alt text](<WhatsApp Image 2025-12-31 at 8.27.20 PM (1).jpeg>) ![alt text](<WhatsApp Image 2025-12-31 at 8.27.20 PM.jpeg>)
