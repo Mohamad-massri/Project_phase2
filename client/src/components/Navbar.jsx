@@ -18,8 +18,8 @@ const Navbar = () => {
           <Link className="link" to="/?cat=art">
             <h6>ART</h6>
           </Link>
-          <Link className="link" to="/?cat=science">
-            <h6>SCIENCE</h6>
+          <Link className="link" to="/?cat=programming">
+            <h6>PROGRAMMING</h6>
           </Link>
           <Link className="link" to="/?cat=technology">
             <h6>TECHNOLOGY</h6>
@@ -41,11 +41,7 @@ const Navbar = () => {
               Login
             </Link>
           )}
-          <span className="write">
-            <Link className="link" to="/write">
-              Write
-            </Link>
-          </span>
+         
         </div>
       </div>
     </div>
